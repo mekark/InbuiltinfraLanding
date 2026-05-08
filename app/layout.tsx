@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsapp";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -48,9 +49,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       >
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV5X72P4"
-            height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+            height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
         </noscript>
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

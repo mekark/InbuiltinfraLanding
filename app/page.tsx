@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2, Factory, HardHat, Building2, TrendingUp, Search, Layers, ClipboardCheck, Phone, Mail, MapPin, Plus, Minus } from "lucide-react";
+import { ArrowRight, CheckCircle2, Factory, HardHat, Building2, TrendingUp, Search, Layers, ClipboardCheck, Phone, Mail, MapPin, Plus, Minus, Check, Star } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import CountUp from "react-countup";
@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     question: "How many days will you complete my project after I confirm the order?",
-    answer: "Project completion takes 150 days with statutory approvals and 120 days without approvals, strictly followed as per project schedule. We maintain planned timelines through in-house design, fabrication, and execution control."
+    answer: "Project completion takes 150 days with statutory approvals and 150 days without approvals, strictly followed as per project schedule. We maintain planned timelines through in-house design, fabrication, and execution control."
   },
   {
     question: "Is prefabrication construction cost-effective?",
@@ -188,7 +188,7 @@ function GlobalImpactSection() {
 
   return (
     <section
-      className="relative py-32 px-6 bg-gradient-to-br from-[#0A2A4A] via-[#164a7a] to-[#0A2A4A] overflow-hidden"
+      className="relative py-20 px-6 bg-gradient-to-br from-[#0A2A4A] via-[#164a7a] to-[#0A2A4A] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Very Subtle Background Pattern */}
@@ -235,10 +235,10 @@ function GlobalImpactSection() {
             {/* Stats Grid - Compact */}
             <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg">
               {[
-                { number: "1500", suffix: "+", label: "Projects Completed", icon: Building2 },
+                { number: "500", suffix: "+", label: "Projects Completed", icon: Building2 },
                 { number: "15", suffix: "+", label: "Years of Excellence", icon: TrendingUp },
                 { number: "98", suffix: "%", label: "Client Satisfaction", icon: CheckCircle2 },
-                { number: "50", suffix: "+", label: "Expert Team Members", icon: HardHat },
+                { number: "250", suffix: "+", label: "Expert Team Members", icon: HardHat },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -371,8 +371,8 @@ function WhyInbuiltCarousel() {
                 scale: position === "center" ? 1 : 0.85,
                 opacity: position === "hidden" ? 0 : position === "center" ? 1 : 0.5,
                 x: position === "hidden" ? (isLeft ? "-100%" : "100%") :
-                   position === "center" ? "0%" :
-                   isLeft ? "-110%" : "110%",
+                  position === "center" ? "0%" :
+                    isLeft ? "-110%" : "110%",
                 zIndex: position === "center" ? 20 : 10,
               }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -405,11 +405,10 @@ function WhyInbuiltCarousel() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "w-8 bg-[#0A2A4A]"
-                : "w-2.5 bg-[#0A2A4A]/30 hover:bg-[#0A2A4A]/50"
-            }`}
+            className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex
+              ? "w-8 bg-[#0A2A4A]"
+              : "w-2.5 bg-[#0A2A4A]/30 hover:bg-[#0A2A4A]/50"
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
@@ -560,90 +559,525 @@ export default function LandingPage() {
       </motion.nav>
 
       {/* Hero Section - Left Aligned */}
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[#0A2A4A]">
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center overflow-hidden bg-[#0A2A4A]"
+      >
         <div className="absolute inset-0">
           <HeroBackgroundCarousel />
-          {/* Blue gradient overlay with opacity for better visibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4A]/95 via-[#0A2A4A]/60 to-[#0A2A4A]/30" />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4A]/95 via-[#0A2A4A]/70 to-[#0A2A4A]/40" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-32 lg:py-40">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 pb-16 lg:py-40">
+          <div className="grid lg:grid-cols-[1fr_460px] gap-10 items-center">
+
+            {/* LEFT CONTENT */}
+            {/* LEFT CONTENT */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col items-start"
-            >
+              className="flex flex-col items-start max-w-3xl order-1 lg:order-1"            >
+
+              {/* Top Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFAC03]/10 border border-[#FFAC03]/30 mb-8"
+                className="inline-flex items-center gap-2 mb-6"
               >
-                <HardHat className="w-4 h-4 text-[#FFAC03]" strokeWidth={2.5} />
-                <span className="text-xs font-inter font-black tracking-widest text-[#FFAC03] uppercase">Trusted PEB Manufacturer</span>
+                <span className="w-2 h-2 rounded-full bg-[#FFAC03]" />
+
+                <span className="text-[12px] sm:text-[13px] font-inter font-black tracking-[0.2em] uppercase text-[#FFAC03]">
+                  South India's #1 Trusted PEB Manufacturer — 15+ Years
+                </span>
               </motion.div>
 
+              {/* Main Heading */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-inter font-black tracking-tighter text-white leading-[0.95] mb-8"
+                className="text-[44px] sm:text-[64px] md:text-[82px] lg:text-[92px] font-inter font-black tracking-[-0.045em] text-white leading-[0.95]"
               >
-                Leading PEB{" "}
-                <span className="block mt-2 text-[#FFAC03]">
-                  Manufacturing.
+                Build Your
+                <br />
+
+                Warehouse
+                {/* <br />
+
+                or Institution
+                <br /> */}
+                <span className="block mt-4 text-[#FFAC03] text-[34px] sm:text-[42px] md:text-[48px] lg:text-[54px] font-light tracking-[-0.03em] leading-none italic">
+                  40% Faster.
                 </span>
               </motion.h1>
 
+              {/* Description */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.7 }}
-                className="font-roboto text-lg md:text-xl text-white/90 max-w-xl mb-10 leading-relaxed font-medium"
+                className="mt-8 max-w-2xl font-roboto text-[18px] leading-[1.9] text-white/80"
               >
-                Delivering premium institutional and commercial structures with precision engineering, advanced technology, and uncompromising quality standards.
+                Fixed price. 150-day delivery guarantee. Single-point
+                responsibility from design to handover.
               </motion.p>
 
+              {/* Features */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.7 }}
-                className="grid grid-cols-2 gap-4 mb-10 w-full max-w-lg"
+                className="mt-8 space-y-5"
               >
+
                 {[
-                  "On-Time Delivery",
-                  "Transparent Pricing",
-                  "Expert Engineering",
-                  "End-to-End Execution"
+                  "End-to-end delivery: Design → Fabrication → Erection",
+                  "Single-point responsibility. Zero coordination gaps.",
+                  "IS 800 compliant factory fabrication. Structural certificate on handover.",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-[#FFAC03] flex-shrink-0" strokeWidth={2.5} />
-                    <span className="text-sm font-inter font-bold text-white">{item}</span>
+                  <div
+                    key={i}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#FFAC03] flex-shrink-0">
+                      <Check
+                        className="h-4 w-4 text-[#0A2A4A]"
+                        strokeWidth={3.5}
+                      />
+                    </div>
+
+                    <p className="font-roboto text-[17px] text-white/90 leading-relaxed">
+                      {item}
+                    </p>
                   </div>
                 ))}
               </motion.div>
+              {/* Reviews */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55, duration: 0.7 }}
+                className="mt-8 flex items-center gap-3"
+              >
 
+                {/* Customer Images */}
+                <div className="flex -space-x-2">
+
+                  <img
+                    src="/Inbuilt_Infra_client_logo_asset/KRM_School.jpg"
+                    alt="Client"
+                    className="w-9 h-9 rounded-full object-cover border-2 border-[#0A2A4A] bg-white"
+                  />
+
+                  <img
+                    src="/Inbuilt_Infra_client_logo_asset/MGR-University.png"
+                    alt="Client"
+                    className="w-9 h-9 rounded-full object-cover border-2 border-[#0A2A4A] bg-white"
+                  />
+
+                  <img
+                    src="/Inbuilt_Infra_client_logo_asset/Vel_Tech_University.png"
+                    alt="Client"
+                    className="w-9 h-9 rounded-full object-cover border-2 border-[#0A2A4A] bg-white"
+                  />
+                </div>
+
+                {/* Rating Content */}
+                <div className="flex flex-col">
+
+                  {/* Stars + Rating */}
+                  <div className="flex items-center gap-2">
+
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-[#FFAC03] text-[#FFAC03]"
+                          strokeWidth={1.8}
+                        />
+                      ))}
+                    </div>
+
+                    <span className="text-white font-inter font-bold text-sm">
+                      4.7/5 Trusted Client Rating
+                    </span>
+                  </div>
+
+                  {/* Bottom Text */}
+                  <span className="text-white/70 text-[13px] font-roboto leading-relaxed">
+                    500+ Successful Industrial Projects
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Buttons */}
+              {/* <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.7 }}
+                className="flex flex-col sm:flex-row gap-4 mt-10"
+              >
+                <a
+                  href="#contact-form"
+                  className="group bg-[#FFAC03] text-[#0A2A4A] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FF9D00] transition-all shadow-xl shadow-[#FFAC03]/30 active:scale-95 flex items-center justify-center gap-2 text-base"
+                >
+                  Get Free Consultation
+
+                  <ArrowRight
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    strokeWidth={2.5}
+                  />
+                </a>
+
+                <a
+                  href="#portfolio"
+                  className="bg-transparent border-2 border-[#FFAC03] text-[#FFAC03] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FFAC03]/10 transition-all active:scale-95 text-base flex items-center justify-center"
+                >
+                  View Projects
+                </a>
+              </motion.div> */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.7 }}
-                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-              >
-                <a href="#contact-form" className="group bg-[#FFAC03] text-[#0A2A4A] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FF9D00] transition-all shadow-xl shadow-[#FFAC03]/30 active:scale-95 flex items-center justify-center gap-2 text-base">
-                  Get Free Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+                className="hidden lg:flex flex-col sm:flex-row gap-4 mt-10 w-full sm:w-auto"              >
+
+                {/* Call Us */}
+                <a
+                  href="tel:9790924754"
+                  className="group bg-[#FFAC03] text-[#0A2A4A] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FF9D00] transition-all shadow-xl shadow-[#FFAC03]/20 active:scale-95 flex items-center justify-center gap-3 text-base"
+                >
+                  <Phone
+                    className="w-5 h-5"
+                    strokeWidth={2.5}
+                  />
+
+                  Call Us
                 </a>
-                <a href="#portfolio" className="bg-transparent border-2 border-[#FFAC03] text-[#FFAC03] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FFAC03]/10 transition-all active:scale-95 text-base flex items-center justify-center">
-                  View Projects
+
+                {/* WhatsApp */}
+                <a
+                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group border-2 border-[#25D366] text-[#25D366] px-8 py-4 rounded-full font-inter font-black hover:bg-[#25D366]/10 transition-all active:scale-95 flex items-center justify-center gap-3 text-base"
+                >
+                  <svg
+                    viewBox="0 0 32 32"
+                    className="w-5 h-5 fill-current"
+                    aria-hidden="true"
+                  >
+                    <path d="M19.11 17.21c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.13-.42-2.16-1.34-.8-.71-1.34-1.58-1.49-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.99-.22-.52-.44-.45-.6-.46-.16-.01-.34-.01-.52-.01s-.47.07-.71.34c-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.14.18 1.89 2.88 4.57 4.03.64.27 1.14.43 1.53.55.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.8-1.27.22-.63.22-1.16.16-1.27-.07-.11-.24-.18-.51-.32Z" />
+                    <path d="M16.01 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.57-1.68a12.75 12.75 0 0 0 6.24 1.61h.01c7.06 0 12.79-5.74 12.79-12.8 0-3.42-1.33-6.64-3.75-9.05A12.7 12.7 0 0 0 16.01 3.2Zm0 23.37h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.9 1 1.04-3.8-.25-.39a10.63 10.63 0 1 1 8.91 4.9Z" />
+                  </svg>
+
+                  WhatsApp Us
                 </a>
               </motion.div>
             </motion.div>
 
-            {/* Right side - spacer for carousel */}
-            <div className="hidden lg:block" />
+            {/* RIGHT SIDE FORM */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="w-full max-w-[460px] mx-auto lg:ml-auto order-2 lg:-mt-27" >
+              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-[26px] p-5 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+
+                {/* Heading */}
+                <div className="mb-5">
+                  <h3 className="text-2xl md:text-[30px] font-inter font-black text-white mb-2 leading-tight">
+                    Get Free Project Estimate
+                  </h3>
+
+                  {/* <p className="text-white/80 font-roboto text-base leading-relaxed"> 
+                    Our engineering team responds within 4 business hours.
+                    No obligation.
+                  </p> */}
+                </div>
+
+                {/* FORM */}
+                <form className="space-y-4"
+                  onSubmit={handleSubmit}>
+                  {/* Name */}
+                  <div>
+                    <label className="block text-sm font-inter font-bold text-white mb-2">
+                      Your Name *
+                    </label>
+
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="Full name"
+                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-sm font-inter font-bold text-white mb-2">
+                      Mobile Number *
+                    </label>
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      placeholder="+91 98xxx xxxxx"
+                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                    />
+                  </div>
+
+                  {/* Project Type */}
+                  <div>
+                    <label className="block text-sm font-inter font-bold text-white mb-2">
+                      Project Type *
+                    </label>
+
+                    <select
+                      name="project_type"
+                      defaultValue=""
+                      required
+                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                    >
+                      <option value="" disabled className="text-black">
+                        Select project type
+                      </option>
+
+                      <option className="text-black">
+                        Industrial Warehouse</option>
+
+                      <option className="text-black">
+                        Commercial Building
+                      </option>
+
+                      <option className="text-black">
+                        Institutional Sector</option>
+
+                      <option className="text-black">
+                        Multi-Storey Steel Building
+                      </option>
+
+                      <option className="text-black">
+                        Tensile
+                      </option>
+
+                      <option className="text-black">
+                        Other
+                      </option>
+                    </select>
+                  </div>
+
+                  {/* Area + Location Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    {/* Area */}
+                    <div>
+                      <label className="block text-sm font-inter font-bold text-white mb-2">
+                        Approx. Area (sq.ft) *
+                      </label>
+
+                      <select
+                        defaultValue=""
+                        name="sqft"
+                        required
+                        className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      >
+                        <option value="" disabled className="text-black">
+                          Select area
+                        </option>
+
+                        <option className="text-black">
+                          5,000 - 10,000 sq.ft
+                        </option>
+
+                        <option className="text-black">
+                          10,000 - 25,000 sq.ft
+                        </option>
+
+                        <option className="text-black">
+                          25,000 - 50,000 sq.ft
+                        </option>
+
+                        <option className="text-black">
+                          Above 50,000 sq.ft
+                        </option>
+                      </select>
+                    </div>
+
+                    {/* Location */}
+                    <div>
+                      <label className="block text-sm font-inter font-bold text-white mb-2">
+                        Project Location
+                      </label>
+
+                      <input
+                        type="text"
+                        name="location"
+                        required
+                        placeholder="City, State"
+                        className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      />
+                    </div>
+
+                  </div>
+
+                  {/* BUTTON */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-5 py-4 text-base font-inter font-black text-[#0A2A4A] transition-all hover:shadow-[0_20px_50px_rgba(255,172,3,0.35)] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="h-5 w-5 animate-spin"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <circle
+                              className="opacity-20"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+
+                            <path
+                              className="opacity-90"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                            />
+                          </svg>
+
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Get My Free Project Estimate
+
+                          <ArrowRight
+                            className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                            strokeWidth={2.5}
+                          />
+                        </>
+                      )}
+                    </span>
+                  </button>
+
+                  {/* FOOTER */}
+                  <p className="text-center text-[12px] leading-relaxed text-white/70 font-roboto pt-1">
+                    🔒 No spam. No obligation. We call you within 4 business hours.
+                  </p>
+                </form>
+              </div>
+            </motion.div>
+            <div className="flex flex-col gap-4 mt-8 lg:hidden order-3">
+
+              <a
+                href="tel:9790924754"
+                className="group bg-[#FFAC03] text-[#0A2A4A] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FF9D00] transition-all shadow-xl shadow-[#FFAC03]/20 active:scale-95 flex items-center justify-center gap-3 text-base"
+              >
+                <Phone
+                  className="w-5 h-5"
+                  strokeWidth={2.5}
+                />
+
+                Call Us
+              </a>
+
+              <a
+                href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noreferrer"
+                className="group border-2 border-[#25D366] text-[#25D366] px-8 py-4 rounded-full font-inter font-black hover:bg-[#25D366]/10 transition-all active:scale-95 flex items-center justify-center gap-3 text-base"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* STATS BAR */}
+      <section className="relative z-20 -mt-1 bg-[#071726] border-t border-white/5 border-b border-white/5">
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+
+            {[
+              {
+                number: 500,
+                suffix: "+",
+                label: "Projects Delivered",
+                animated: true,
+              },
+              {
+                number: 15,
+                suffix: "+",
+                label: "Years of Excellence",
+                animated: true,
+              },
+              {
+                number: 150,
+                suffix: "",
+                label: "Day Delivery Guarantee",
+                animated: true,
+              },
+              {
+                number: "98%",
+                label: "On-Time Rate",
+                animated: false,
+              },
+              {
+                number: "IS 800",
+                label: "Compliant Fabrication",
+                animated: false,
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-2 sm:gap-3 py-6 px-5 border-b lg:border-b-0 border-white/5 lg:border-r last:border-r-0 border-white/10"
+              >
+
+                {/* Number */}
+                <div className="flex items-baseline text-[#FFAC03] font-inter font-black text-3xl tracking-tight">
+
+                  {item.animated ? (
+                    <>
+                      <CountUp
+                        end={Number(item.number)}
+                        duration={2.5}
+                        enableScrollSpy
+                        scrollSpyOnce
+                      />
+
+                      <span>{item.suffix}</span>
+                    </>
+                  ) : (
+                    <span>{item.number}</span>
+                  )}
+                </div>
+
+                {/* Label */}
+                <span className="text-white/70 text-sm font-roboto leading-snug">
+                  {item.label}
+                </span>
+
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -659,7 +1093,7 @@ export default function LandingPage() {
             className="text-center mb-12"
           >
             <p className="text-sm font-inter font-black tracking-widest text-[#FFAC03] uppercase mb-2">Trusted By</p>
-            <h2 className="text-3xl font-inter font-black text-[#0A2A4A]">Leading Institutions</h2>
+            {/* <h2 className="text-3xl font-inter font-black text-[#0A2A4A]">Leading Institutions</h2> */}
           </motion.div>
 
           {/* Auto-scrolling carousel */}
@@ -687,7 +1121,7 @@ export default function LandingPage() {
       </section>
 
       {/* Why Choose Us - Apple Carousel */}
-      <section id="why-us" className="py-32 px-6 bg-gradient-to-b from-white to-slate-50">
+      <section id="why-us" className="py-20 px-6 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -745,7 +1179,7 @@ export default function LandingPage() {
       </section> */}
 
       {/* Industries Section */}
-      <section id="industries" className="py-32 px-6 bg-white relative overflow-hidden">
+      <section id="industries" className="py-20 px-6 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -906,7 +1340,7 @@ export default function LandingPage() {
       </section>
 
       {/* Problem → Solution Comparison Table */}
-      <section className="py-32 px-6 bg-white relative overflow-hidden">
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -960,28 +1394,28 @@ export default function LandingPage() {
               <tbody>
                 {[
                   {
-                    problem: "Project delays caused by multiple contractors and site-dependent work",
-                    solution: "Advanced PEB structural planning ensures faster execution and predictable timelines"
+                    problem: "Multiple contractors — no single accountability. Delays compound.",
+                    solution: "Single point of contact from design to handover. We own the outcome."
                   },
                   {
-                    problem: "Rising material and labor costs impacting overall budgets",
-                    solution: "Optimized steel engineering minimizes waste and controls total project cost"
+                    problem: "Quotes change after work starts. 20–30% cost overruns are common.",
+                    solution: "Fixed-price contracts. What we quote is what you pay and period."
                   },
                   {
-                    problem: "Inconsistent quality due to on-site construction variations",
-                    solution: "Strict fabrication quality control with precision factory manufacturing"
+                    problem: "  On-site construction takes 12–18 months for large projects.",
+                    solution: " Factory fabrication + parallel site work = 40–50% faster completion"
                   },
                   {
-                    problem: "Limited visibility on project progress and coordination",
-                    solution: "Real-time project monitoring for transparent tracking and reporting"
+                    problem: "  Quality varies by labour availability and site conditions.",
+                    solution: "IS 800 compliant factory precision. Same quality every project, every time."
                   },
                   {
-                    problem: "Inefficient structural design leading to higher maintenance",
-                    solution: "Engineered PEB systems built for durability and long-term performance"
+                    problem: "No real-time visibility. Problems emerge only after delays.	",
+                    solution: "Weekly progress reports + dedicated project manager on-site throughout."
                   },
                   {
-                    problem: "Slow execution and communication gaps",
-                    solution: "Dedicated engineering supervision throughout the entire project lifecycle"
+                    problem: " Structural modifications later are expensive and time-consuming.",
+                    solution: "Modular PEB design — expand, modify, or relocate. Built for your future.",
                   }
                 ].map((item, i) => (
                   <tr key={i} className="border-b border-slate-200 last:border-0 hover:bg-slate-50 transition-colors">
@@ -1031,7 +1465,7 @@ export default function LandingPage() {
       </section>
 
       {/* Process Section - REIMAGINED */}
-      <section id="process" className="py-32 px-6 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+      <section id="process" className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -1108,7 +1542,7 @@ export default function LandingPage() {
       </section>
 
       {/* Portfolio Section - Enhanced Layout */}
-      <section id="portfolio" className="py-32 px-6 bg-gradient-to-b from-white to-slate-50">
+      <section id="portfolio" className="py-20 px-6 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -1228,7 +1662,7 @@ export default function LandingPage() {
       <GlobalImpactSection />
 
       {/* Testimonials Section - Auto-Scrolling Marquee */}
-      <section id="testimonials" className="py-32 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+      <section id="testimonials" className="py-20 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-12">
           <motion.div
             initial="hidden"
@@ -1282,7 +1716,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-32 px-6 bg-gradient-to-b from-slate-50 to-white">
+      <section id="faq" className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"
@@ -1319,201 +1753,592 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
+      {/* WHY INBUILT INFRA */}
+      <section className="relative py-24 overflow-hidden bg-[#0A2A4A]">
 
-      {/* Lead Capture CTA - FULL WIDTH */}
-      <section id="contact-form" className="py-24 bg-white">
-        <div className="w-full">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={scaleIn}
-            className="relative overflow-hidden bg-gradient-to-br from-[#0A2A4A] via-[#164a7a] to-[#0A2A4A]"
-          >
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #FFAC03 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/why-inbuilt-bg.jpg"
+            alt="Industrial Facility"
+            className="w-full h-full object-cover"
+          />
 
-            {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 px-6 py-16 lg:px-16 lg:py-20">
-              {/* Left */}
-              <div className="text-white">
-                <h2 className="text-4xl md:text-5xl font-inter font-black mb-6 leading-tight">
-                  Start Your PEB Project With Confidence
-                </h2>
-                <p className="text-lg md:text-xl text-white/95 font-roboto font-medium mb-10 leading-relaxed">
-                  Get expert consultation and transparent pricing for your next industrial or institutional project.
-                </p>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-[#0A2A4A]/85" />
+        </div>
 
-                {/* Features */}
-                <div className="space-y-5">
-                  {["Free Project Consultation", "Transparent Cost Estimates", "Expert Engineering Support"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                      <div className="w-8 h-8 rounded-full bg-[#FFAC03] flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <CheckCircle2 className="w-5 h-5 text-white" strokeWidth={3} />
-                      </div>
-                      <span className="font-inter font-bold text-white text-base md:text-lg">{item}</span>
-                    </div>
-                  ))}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+
+          {/* Top Content */}
+          <div className="max-w-3xl">
+
+            {/* Label */}
+            <div className="inline-flex items-center gap-1mb-6">
+
+              {/* <span className="w-2 h-2 rounded-full bg-[#FFAC03]" /> */}
+
+              <h2 className="text-[#FFAC03] uppercase tracking-[0.18em] text-[32px] font-inter font-black">
+                Why Inbuilt Infra
+              </h2>
+            </div>
+
+            {/* Heading */}
+            {/* <h2 className="text-white font-inter font-black text-5xl md:text-6xl leading-[1.02] tracking-[-0.05em]">
+              Every claim.
+              <br />
+
+              Backed by proof.
+            </h2> */}
+
+            {/* Description */}
+            {/* <p className="mt-8 text-white/75 text-[18px] leading-[1.9] max-w-2xl font-roboto">
+              We don’t say “quality” without numbers behind it.
+              Here’s what makes us different — specifically.
+            </p> */}
+          </div>
+
+          {/* GRID */}
+          <div className="mt-16 rounded-[32px] overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md">
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3">
+
+              {[
+                {
+                  title: "40% Faster",
+                  subtitle: "Proven Delivery Speed",
+                  description:
+                    "Across 500+ projects vs traditional RCC construction — factory fabrication and parallel site preparation cuts timeline almost in half.",
+                },
+                {
+                  title: "Fixed Price",
+                  subtitle: "No Cost Surprises. Ever.",
+                  description:
+                    "Detailed BOQ before we cut a single beam. No provisional items. No surprise invoices. What you sign is what you pay — contractually guaranteed.",
+                },
+                {
+                  title: "150 Days",
+                  subtitle: "Delivery Guarantee",
+                  description:
+                    "150 days from order to handover. Penalty clause built into every contract. We've consistently maintained high on-time completion rates.",
+                },
+                {
+                  title: "IS 800",
+                  subtitle: "Compliant Fabrication",
+                  description:
+                    "Every structural component meets Indian Standard specifications. Multi-stage QC at fabrication, erection, and final handover.",
+                },
+                {
+                  title: "Zero Gaps",
+                  subtitle: "Single-Point Responsibility",
+                  description:
+                    "Design, fabrication, erection — all managed in-house. One project manager. One contact. No coordination chaos.",
+                },
+                {
+                  title: "500+",
+                  subtitle: "Projects Delivered",
+                  description:
+                    "Trusted by universities, industries, institutions, hospitals, and commercial clients across South India.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group border-b border-white/10 lg:border-b-0 lg:border-r last:border-r-0 border-white/10 p-8 md:p-10 hover:bg-white/[0.03] transition-all duration-300"
+                >
+
+                  {/* Number / Title */}
+                  <h3 className="text-[#FFAC03] text-4xl font-inter font-black tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  {/* Subtitle */}
+                  <h4 className="mt-5 text-white text-xl font-inter font-bold">
+                    {item.subtitle}
+                  </h4>
+
+                  {/* Description */}
+                  <p className="mt-5 text-white/70 text-[15px] leading-[1.9] font-roboto">
+                    {item.description}
+                  </p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA - FLOATING WITH IMAGE OVERLAY */}
+      {/* URGENCY CTA SECTION */}
+      <section className="relative py-20 bg-[#fff] overflow-hidden">
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+
+          <div className="relative rounded-[36px] bg-[#0A2A4A] overflow-hidden border border-white/5">
+
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#FFAC03]/10 blur-3xl rounded-full" />
+
+            <div className="relative z-10 grid lg:grid-cols-[1.2fr_auto] gap-10 items-center px-8 md:px-14 py-12 md:py-16">
+
+              {/* LEFT CONTENT */}
+              <div>
+
+                {/* Small Label */}
+                <div className="inline-flex items-center gap-2 mb-5 flex-wrap">
+                  <span className="text-[#FFAC03] uppercase tracking-[0.18em] text-[12px] font-inter font-black">
+                    Project Calendar Update — May 2026
+                  </span>
+                </div>
+
+                {/* Heading */}
+                <h2 className="text-white font-inter font-black text-4xl md:text-5xl leading-[1.05] tracking-[-0.04em] max-w-3xl">
+                  Production Slots for Q2 2026
+                  <br />
+
+                  Are Filling Fast.
+                </h2>
+
+                {/* Description */}
+                <p className="mt-7 text-white/75 text-[17px] leading-[1.9] max-w-2xl font-roboto">
+                  Inbuilt Infra manages multiple large-scale projects simultaneously —
+                  but our engineering calendar operates on a first-confirmed basis.
+                  Projects enquired this month receive a complimentary site feasibility
+                  assessment.
+                </p>
               </div>
 
-              {/* Right - Form */}
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl w-full max-w-xl lg:max-w-none mx-auto border-4 border-[#FFAC03]/30">
-                <form className="space-y-5" onSubmit={handleSubmit}>
+              {/* RIGHT BUTTONS */}
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-4 lg:min-w-[240px]">
+
+                {/* CTA */}
+                <a
+                  href="#contact-form"
+                  className="group inline-flex items-center justify-center rounded-2xl bg-[#FFAC03] px-8 py-4 text-[#071726] font-inter font-black text-base transition-all hover:bg-[#FF9D00] active:scale-[0.98]"
+                >
+                  <span className="flex items-center gap-2">
+                    Reserve My Slot
+
+                    <ArrowRight
+                      className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                      strokeWidth={2.5}
+                    />
+                  </span>
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-8 py-4 text-white font-inter font-black text-base transition-all hover:bg-[#20c45a] active:scale-[0.98]"
+                >
+                  <svg
+                    viewBox="0 0 32 32"
+                    className="w-5 h-5 fill-current"
+                    aria-hidden="true"
+                  >
+                    <path d="M19.11 17.21c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.13-.42-2.16-1.34-.8-.71-1.34-1.58-1.49-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.99-.22-.52-.44-.45-.6-.46-.16-.01-.34-.01-.52-.01s-.47.07-.71.34c-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.14.18 1.89 2.88 4.57 4.03.64.27 1.14.43 1.53.55.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.8-1.27.22-.63.22-1.16.16-1.27-.07-.11-.24-.18-.51-.32Z" />
+                    <path d="M16.01 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.57-1.68a12.75 12.75 0 0 0 6.24 1.61h.01c7.06 0 12.79-5.74 12.79-12.8 0-3.42-1.33-6.64-3.75-9.05A12.7 12.7 0 0 0 16.01 3.2Zm0 23.37h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.9 1 1.04-3.8-.25-.39a10.63 10.63 0 1 1 8.91 4.9Z" />
+                  </svg>
+
+                  WhatsApp Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Capture CTA - FULL WIDTH */}
+      <section
+        id="contact-form"
+        className="relative overflow-hidden py-24 bg-[#0A2A4A] text-white"
+      >
+
+        {/* Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#FFAC03]/5 blur-3xl rounded-full" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+
+          <div className="grid lg:grid-cols-[1fr_520px] gap-16 items-start">
+
+            {/* LEFT SIDE */}
+            <div className="text-white pt-6">
+
+              {/* Label */}
+              <div className="inline-flex items-center gap-2 mb-6">
+
+                <span className="w-2 h-2 rounded-full bg-[#FFAC03]" />
+
+                <span className="text-[#FFAC03] uppercase tracking-[0.18em] text-[12px] font-inter font-black">
+                  Start Your Project
+                </span>
+              </div>
+
+              {/* Heading */}
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-inter font-black leading-[0.96] tracking-[-0.05em]">
+                Get a Free
+                <br />
+
+                Engineering
+                <br />
+
+                Estimate in 24 Hours.
+              </h2>
+
+              {/* Description */}
+              <p className="mt-8 max-w-2xl text-[18px] leading-[1.9] text-white/75 font-roboto">
+                Tell us about your project. Our engineering team calls
+                within 24 hours, visits your site within 72 hours,
+                and delivers a fixed-price BOQ within 5 working days —
+                zero cost, zero obligation.
+              </p>
+
+              {/* Bullet Points */}
+              <div className="mt-10 space-y-5">
+
+                {[
+                  "Fixed-price BOQ — no hidden items, no provisional sums",
+                  "150-day delivery guarantee written into the contract",
+                  "Single project manager dedicated to your project",
+                  "IS 800 compliant fabrication — structural certificate on handover",
+                  "Trusted by SRM, Vel Tech, MGR University & 500+ projects",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-4"
+                  >
+
+                    <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#FFAC03]/10 border border-[#FFAC03]/20 flex-shrink-0">
+
+                      <Check
+                        className="h-4 w-4 text-[#FFAC03]"
+                        strokeWidth={3}
+                      />
+                    </div>
+
+                    <p className="text-white/90 font-roboto text-[16px] leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Contact Info */}
+              {/* <div className="mt-12 rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-md p-7 max-w-xl">
+
+                <div className="space-y-5">
+
+                  {/* Phone 
+                  <div className="flex items-center gap-4">
+
+                    <div className="w-11 h-11 rounded-full bg-[#FFAC03]/10 border border-[#FFAC03]/20 flex items-center justify-center flex-shrink-0">
+                      <Phone
+                        className="w-4 h-4 text-[#FFAC03]"
+                        strokeWidth={2.5}
+                      />
+                    </div>
+
+                    <a
+                      href="tel:+917823967391"
+                      className="text-white/90 font-roboto hover:text-[#FFAC03] transition-colors"
+                    >
+                      +91 78239 67391
+                    </a>
+                  </div>
+
+                  {/* WhatsApp *
+                  <div className="flex items-center gap-4">
+
+                    <div className="w-11 h-11 rounded-full bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center flex-shrink-0">
+
+                      <svg
+                        viewBox="0 0 32 32"
+                        className="w-4 h-4 fill-[#25D366]"
+                        aria-hidden="true"
+                      >
+                        <path d="M19.11 17.21c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.13-.42-2.16-1.34-.8-.71-1.34-1.58-1.49-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.99-.22-.52-.44-.45-.6-.46-.16-.01-.34-.01-.52-.01s-.47.07-.71.34c-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.14.18 1.89 2.88 4.57 4.03.64.27 1.14.43 1.53.55.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.8-1.27.22-.63.22-1.16.16-1.27-.07-.11-.24-.18-.51-.32Z" />
+                        <path d="M16.01 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.57-1.68a12.75 12.75 0 0 0 6.24 1.61h.01c7.06 0 12.79-5.74 12.79-12.8 0-3.42-1.33-6.64-3.75-9.05A12.7 12.7 0 0 0 16.01 3.2Zm0 23.37h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.9 1 1.04-3.8-.25-.39a10.63 10.63 0 1 1 8.91 4.9Z" />
+                      </svg>
+                    </div>
+
+                    <a
+                      href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-white/90 font-roboto hover:text-[#25D366] transition-colors"
+                    >
+                      WhatsApp us directly
+                    </a>
+                  </div>
+
+                  {/* Email *
+                  <div className="flex items-center gap-4">
+
+                    <div className="w-11 h-11 rounded-full bg-[#FFAC03]/10 border border-[#FFAC03]/20 flex items-center justify-center flex-shrink-0">
+                      <Mail
+                        className="w-4 h-4 text-[#FFAC03]"
+                        strokeWidth={2.5}
+                      />
+                    </div>
+
+                    <a
+                      href="mailto:info@inbuiltinfra.com"
+                      className="text-white/90 font-roboto hover:text-[#FFAC03] transition-colors"
+                    >
+                      info@inbuiltinfra.com
+                    </a>
+                  </div>
+
+                  {/* Address *
+                  <div className="flex items-start gap-4">
+
+                    <div className="w-11 h-11 rounded-full bg-[#FFAC03]/10 border border-[#FFAC03]/20 flex items-center justify-center flex-shrink-0">
+                      <MapPin
+                        className="w-4 h-4 text-[#FFAC03]"
+                        strokeWidth={2.5}
+                      />
+                    </div>
+
+                    <p className="text-white/90 font-roboto leading-relaxed">
+                      First Floor, ZUBII Manor, 7th Avenue,
+                      Ashok Nagar, Chennai – 600083
+                    </p>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+
+            {/* RIGHT FORM */}
+            {/* KEEP YOUR EXISTING UPDATED FORM HERE */}
+            {/* Right - Form */}
+            <div className="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl w-full max-w-xl lg:max-w-none mx-auto border border-[#FFAC03]/20 relative overflow-hidden">
+
+              {/* Top Accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FFAC03] via-[#FF8800] to-[#FFAC03]" />
+
+              {/* Heading */}
+              <div className="mb-8">
+
+                <h3 className="text-[#0A2A4A] text-3xl font-inter font-black tracking-tight">
+                  Request Free Engineering Estimate
+                </h3>
+
+                <p className="mt-3 text-slate-500 text-[15px] leading-relaxed font-roboto">
+                  Our engineering team reviews your requirements and responds
+                  within 24 business hours.
+                </p>
+              </div>
+
+              {/* Trust Badges */}
+              {/* <div className="grid grid-cols-2 gap-4 mb-8">
+
+                {[
+                  "IS 800 Compliant",
+                  "500+ Projects",
+                  "120-Day Guarantee",
+                  "Fixed Price",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
+                  >
+
+                    <div className="w-10 h-10 rounded-full bg-[#FFAC03]/10 flex items-center justify-center flex-shrink-0">
+
+                      <Check
+                        className="w-4 h-4 text-[#FFAC03]"
+                        strokeWidth={3}
+                      />
+                    </div>
+
+                    <span className="text-[#0A2A4A] font-inter font-bold text-sm leading-snug">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div> */}
+
+              {/* FORM */}
+              <form className="space-y-5" onSubmit={handleSubmit}>
+
+                {/* Row 1 */}
+                <div className="grid md:grid-cols-2 gap-4">
+
                   {/* Name */}
                   <div>
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Full Name *
+                    </label>
+
                     <input
                       type="text"
                       name="name"
-                      placeholder="Name *"
+                      placeholder="Your name"
                       required
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
 
-                  {/* Email ID */}
+                  {/* Mobile */}
                   <div>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email ID *"
-                      required
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
-                    />
-                  </div>
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Mobile Number *
+                    </label>
 
-                  {/* Contact Number */}
-                  <div>
                     <input
                       type="tel"
                       name="phone"
-                      placeholder="Contact Number *"
+                      placeholder="+91 98xxx xxxxx"
                       required
                       pattern="[0-9]{10}"
                       maxLength={10}
                       onInput={(e) => {
                         const target = e.target as HTMLInputElement;
-                        target.value = target.value.replace(/[^0-9]/g, '');
+                        target.value = target.value.replace(/[^0-9]/g, "");
                       }}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
+                </div>
 
-                  {/* City */}
-                  <div>
-                    <input
-                      type="text"
-                      name="location"
-                      placeholder="City *"
-                      required
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
-                    />
-                  </div>
+                {/* Row 2 */}
+                <div className="grid md:grid-cols-2 gap-4">
 
                   {/* Company */}
                   <div>
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Company Name *
+                    </label>
+
                     <input
                       type="text"
                       name="company"
-                      placeholder="Company *"
+                      placeholder="Organisation"
                       required
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
 
-                  {/* Project Type */}
+                  {/* Email */}
                   <div>
-                    <select
-                      name="project_type"
-                      required
-                      defaultValue=""
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all bg-slate-50 focus:bg-white"
-                    >
-                      <option value="" disabled>Project Type *</option>
-                      <option value="Industrial Warehouse">Industrial Warehouse</option>
-                      <option value="Commercial Building">Commercial Building</option>
-                      <option value="Institutional Sector">Institutional Sector</option>
-                      <option value="Multi-Storey Steel Building">Multi-Storey Steel Building</option>
-                      <option value="Tensile">Tensile</option>
-                      <option value="Others">Others</option>
-                    </select>
-                  </div>
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Email ID
+                    </label>
 
-                  {/* Square Feet */}
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="you@company.com"
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Project Type */}
+                <div>
+                  <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    Project Type *
+                  </label>
+
+                  <select
+                    name="project_type"
+                    required
+                    defaultValue=""
+                    className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                  >
+                    <option value="" disabled>
+                      Select project type
+                    </option>
+
+                    <option>Industrial Warehouse / Factory</option>
+                    <option>Educational Institution Block</option>
+                    <option>Hospital / Healthcare Facility</option>
+                    <option>Commercial Building / Office</option>
+                    <option>Cold Storage</option>
+                    <option>Multi-Storey Steel Building</option>
+                    <option>Tensile / Retractable Roofing</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+
+                  {/* Area */}
                   <div>
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Approximate Area *
+                    </label>
+
                     <select
                       name="sqft"
                       required
                       defaultValue=""
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all bg-slate-50 focus:bg-white"
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     >
-                      <option value="" disabled>Square Feet *</option>
-                      <option value="10,000 – 20,000 Sq. ft">10,000 – 20,000 Sq. ft</option>
-                      <option value="20,000 - 30,000 Sq. ft">20,000 - 30,000 Sq. ft</option>
-                      <option value="30,000 – 50,000 Sq. ft">30,000 – 50,000 Sq. ft</option>
-                      <option value="Above 50,000 Sq. ft">Above 50,000 Sq. ft</option>
+                      <option value="" disabled>
+                        Select area
+                      </option>
+
+                      <option>10,000 – 20,000 Sq.ft</option>
+                      <option>20,000 – 30,000 Sq.ft</option>
+                      <option>30,000 – 50,000 Sq.ft</option>
+                      <option>Above 50,000 Sq.ft</option>
                     </select>
                   </div>
-
-                  {/* Project Details */}
                   <div>
-                    <textarea
-                      name="project_details"
-                      placeholder="Project Details (Optional)"
-                      rows={4}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-slate-200 font-roboto font-medium text-base focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/20 transition-all resize-none placeholder:text-slate-400 bg-slate-50 focus:bg-white"
+                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                      Project Location
+                    </label>
+
+                    <input
+                      type="text"
+                      name="location"
+                      placeholder="City, State"
+                      required
+                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
+                </div>
+                {/* Project Details */}
+                <div>
+                  <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    Brief Project Details (Optional)
+                  </label>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FFAC03] to-[#FF8800] text-white py-5 rounded-xl font-inter font-black hover:shadow-2xl hover:shadow-[#FFAC03]/40 transition-all active:scale-[0.98] text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Get Free Consultation'}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+                  <textarea
+                    name="project_details"
+                    placeholder="Crane loads, expansion plans, budget range, special requirements..."
+                    rows={4}
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-roboto text-[15px] resize-none text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                  />
+                </div>
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-8 py-5 font-inter font-black text-[#0A2A4A] text-lg transition-all hover:shadow-2xl hover:shadow-[#FFAC03]/30 active:scale-[0.99] disabled:opacity-50"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {isSubmitting
+                      ? "Submitting..."
+                      : "Get My Free Engineering Estimate"}
 
-      {/* Final CTA - FLOATING WITH IMAGE OVERLAY */}
-      <section className="py-24 px-6 bg-gradient-to-b from-white to-slate-50 relative">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={scaleIn}
-            className="relative rounded-3xl overflow-hidden min-h-[500px] flex items-center"
-          >
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <Image
-                src="/Inbuilt_infra_Landing_Page_Assets/working-construction-concept.jpg"
-                alt="Construction Site"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4A]/95 via-[#0A2A4A]/80 to-[#0A2A4A]/40" />
-            </div>
+                    <ArrowRight
+                      className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                      strokeWidth={2.5}
+                    />
+                  </span>
+                </button>
 
-            {/* Content - Left Aligned */}
-            <div className="relative z-10 w-full max-w-2xl px-8 md:px-12 py-12 md:py-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-inter font-black text-white mb-6 leading-tight">
-                Let's Build Smarter Steel Structures Together
-              </h2>
-              <p className="text-base md:text-lg text-white/95 font-roboto font-medium mb-8 leading-relaxed">
-                Join 1500+ satisfied clients who trust Inbuilt Infra for their infrastructure needs.
-              </p>
-              <a href="#contact-form" className="bg-gradient-to-r from-[#FFAC03] to-[#FF8800] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-inter font-black hover:shadow-2xl hover:shadow-[#FFAC03]/30 transition-all active:scale-[0.98] text-base md:text-lg inline-flex items-center gap-2">
-                Request Your Quote Now
-                <ArrowRight className="w-6 h-6" strokeWidth={2.5} />
-              </a>
+                {/* Footer Note */}
+                <p className="text-center text-slate-500 text-[13px] leading-relaxed font-roboto">
+                  🔒 100% confidential. No spam. Our engineering team calls
+                  within 24 business hours.
+                </p>
+              </form>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1542,27 +2367,27 @@ export default function LandingPage() {
               <div className="flex gap-3">
                 <a href="https://www.facebook.com/profile.php?id=61563459030303" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FFAC03] transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                   </svg>
                 </a>
                 <a href="https://www.instagram.com/inbuiltinfra" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FFAC03] transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                 </a>
                 <a href="https://x.com/InbuiltInfra" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FFAC03] transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
                 <a href="https://www.linkedin.com/company/104104327" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FFAC03] transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                   </svg>
                 </a>
                 <a href="https://www.youtube.com/@InbuiltInfra" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FFAC03] transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                   </svg>
                 </a>
               </div>
