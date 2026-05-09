@@ -946,7 +946,7 @@ export default function LandingPage() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%20Inbuilt%20Infra,%20I%E2%80%99m%20interested%20in%20building%20a%20warehouse.%20Please%20share%20project%20details,%20pricing,%20and%20next%20steps.&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noreferrer"
                   className="group border-2 border-[#25D366] text-[#25D366] px-8 py-4 rounded-full font-inter font-black hover:bg-[#25D366]/10 transition-all active:scale-95 flex items-center justify-center gap-3 text-base"
@@ -2185,7 +2185,7 @@ export default function LandingPage() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                  href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%20Inbuilt%20Infra,%20I%E2%80%99m%20interested%20in%20building%20a%20warehouse.%20Please%20share%20project%20details,%20pricing,%20and%20next%20steps.&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-8 py-4 text-white font-inter font-black text-base transition-all hover:bg-[#20c45a] active:scale-[0.98]"
