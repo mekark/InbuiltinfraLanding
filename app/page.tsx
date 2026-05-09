@@ -2535,7 +2535,6 @@ export default function LandingPage() {
                       type="text"
                       name="location"
                       placeholder="City, State"
-                      required
                       className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
