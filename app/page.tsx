@@ -106,8 +106,6 @@ const portfolioImages = [
   "/Inbuilt_infra_Landing_Page_Assets/DJI_20260221152650_0089_D.JPG.webp",
   "/Inbuilt_infra_Landing_Page_Assets/DJI_20260221152730_0090_D.JPG.webp",
 ];
-  
-
 
 // FAQ data
 const faqs = [
@@ -165,7 +163,7 @@ const faqs = [
 // Testimonials data with bento grid layout
 const testimonials = [
   {
-    quote:"Logistics & 3PL Industry",
+    quote: "Logistics & 3PL Industry",
     detail:
       "Reduced project timeline by 35%” — Inbuilt Infra delivered our 1,20,000 sq.ft logistics warehouse ahead of schedule. The structural precision, clear-span design, and fast erection process helped us operationalize quickly. Their team handled everything from design to handover seamlessly.",
     author: "Operations Head",
@@ -174,10 +172,10 @@ const testimonials = [
   {
     quote: "FMCG Brand",
     detail:
-   "Optimized storage with superior ventilation” — For our FMCG distribution center, ventilation and space planning were critical. Inbuilt Infra designed a high-roof, clear-span warehouse that improved air circulation and pallet stacking efficiency. The build quality exceeded expectations.",
+      "Optimized storage with superior ventilation” — For our FMCG distribution center, ventilation and space planning were critical. Inbuilt Infra designed a high-roof, clear-span warehouse that improved air circulation and pallet stacking efficiency. The build quality exceeded expectations.",
 
-    author:  "Supply Chain Director",
-    company:"FMCG Industry",
+    author: "Supply Chain Director",
+    company: "FMCG Industry",
   },
   {
     quote: "Manufacturing Industry",
@@ -196,9 +194,9 @@ const testimonials = [
   {
     quote: "Automotive OEM Supplier",
     detail:
-     "“Designed for high-load racking systems” — The automotive components warehouse required strong flooring and optimized column spacing. Inbuilt Infra’s structural planning allowed efficient racking installation and improved internal material flow.",
+      "“Designed for high-load racking systems” — The automotive components warehouse required strong flooring and optimized column spacing. Inbuilt Infra’s structural planning allowed efficient racking installation and improved internal material flow.",
     author: "Operations Manager",
-    company:  "Automotive Industry",
+    company: "Automotive Industry",
   },
 ];
 
@@ -2491,15 +2489,19 @@ export default function LandingPage() {
                     <option value="" disabled>
                       Select project type
                     </option>
+                    <option className="text-black">Industrial Warehouse</option>
 
-                    <option>Industrial Warehouse / Factory</option>
-                    <option>Educational Institution Block</option>
-                    <option>Hospital / Healthcare Facility</option>
-                    <option>Commercial Building / Office</option>
-                    <option>Cold Storage</option>
-                    <option>Multi-Storey Steel Building</option>
-                    <option>Tensile / Retractable Roofing</option>
-                    <option>Other</option>
+                    <option className="text-black">Commercial Building</option>
+
+                    <option className="text-black">Institutional Sector</option>
+
+                    <option className="text-black">
+                      Multi-Storey Steel Building
+                    </option>
+
+                    <option className="text-black">Tensile</option>
+
+                    <option className="text-black">Other</option>
                   </select>
                 </div>
 
