@@ -106,6 +106,8 @@ const portfolioImages = [
   "/Inbuilt_infra_Landing_Page_Assets/DJI_20260221152650_0089_D.JPG.webp",
   "/Inbuilt_infra_Landing_Page_Assets/DJI_20260221152730_0090_D.JPG.webp",
 ];
+  
+
 
 // FAQ data
 const faqs = [
