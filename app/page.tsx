@@ -1010,6 +1010,7 @@ export default function LandingPage() {
                     <input
                       type="tel"
                       name="phone"
+                      maxLength={10}
                       required
                       placeholder="+91 98xxx xxxxx"
                       className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
