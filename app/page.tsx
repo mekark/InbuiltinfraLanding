@@ -11,6 +11,7 @@ import {
   Search,
   Layers,
   ClipboardCheck,
+  Clock,
   Phone,
   Mail,
   MapPin,
@@ -315,13 +316,13 @@ function GlobalImpactSection() {
             <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-lg">
               {[
                 {
-                  number: "500",
+                  number: "300",
                   suffix: "+",
                   label: "Projects Completed",
                   icon: Building2,
                 },
                 {
-                  number: "15",
+                  number: "12",
                   suffix: "+",
                   label: "Years of Excellence",
                   icon: TrendingUp,
@@ -417,40 +418,40 @@ function WhyInbuiltCarousel() {
 
   const features = [
     {
-      icon: Layers,
-      title: "Engineering Excellence",
+      icon: ClipboardCheck,
+      title: "Turnkey Warehouse Construction",
       description:
-        "Advanced PEB design and structural precision for reliable outcomes.",
+        "From design to handover, we manage every stage under one contract.",
     },
     {
-      icon: TrendingUp,
+      icon: Layers,
+      title: "PEB Warehouse Experts",
+      description:
+        "Engineered steel structures for faster construction and maximum durability.",
+    },
+    {
+      icon: Clock,
       title: "On-Time Delivery",
       description:
-        "Structured execution supported by professional project management.",
+        "Efficient planning and execution to complete projects on schedule.",
     },
     {
       icon: Search,
-      title: "Transparent Costing",
+      title: "Transparent Pricing",
       description:
-        "Clear estimates with optimized steel utilization and zero hidden fees.",
+        "Detailed estimates with optimized designs and no hidden costs.",
     },
     {
       icon: Factory,
-      title: "End-to-End Solutions",
+      title: "Industrial Construction",
       description:
-        "Complete support from initial design concept to final installation.",
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Quality Assurance",
-      description:
-        "Precision fabrication and rigorous multi-stage inspections.",
+        "Trusted industrial building construction company for warehouses and manufacturing facilities.",
     },
     {
       icon: HardHat,
-      title: "Skilled Workforce",
+      title: "Design & Build Solutions",
       description:
-        "Experienced engineers and highly certified installation teams.",
+        "Complete engineering, construction, and project management from one team.",
     },
   ];
 
@@ -645,15 +646,23 @@ export default function LandingPage() {
 
     const formData = new FormData(e.currentTarget);
 
-    // Prepare the data for the API
+    const projectType = formData.get("project_type");
+    const timeline = formData.get("project_timeline");
+    const budget = formData.get("project_budget");
+    const projectDetails = formData.get("project_details");
+
+    // Prepare the data for the API (keys must match backend field names)
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      message: formData.get("project_details"),
+      message: projectDetails || "",
       company: formData.get("company"),
       location: formData.get("location"),
       sqf: formData.get("sqft"),
+      projectType,
+      projectStartTimeline: timeline,
+      projectBudget: budget,
     };
 
     try {
@@ -798,17 +807,13 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
-                className="text-[44px] sm:text-[64px] md:text-[82px] lg:text-[92px] font-inter font-black tracking-[-0.045em] text-white leading-[0.95]"
+                className="text-[36px] sm:text-[52px] md:text-[68px] lg:text-[76px] font-inter font-black tracking-[-0.045em] text-white leading-[0.95]"
               >
-                Build Your
+                Build a High-Performance
                 <br />
-                Warehouse
-                {/* <br />
-
-                or Institution
-                <br /> */}
-                <span className="block mt-4 text-[#FFAC03] text-[34px] sm:text-[42px] md:text-[48px] lg:text-[54px] font-light tracking-[-0.03em] leading-none italic">
-                  40% Faster.
+                Warehouse <br />
+                <span className="block mt-4 text-[#FFAC03] text-[28px] sm:text-[34px] md:text-[40px] lg:text-[44px] font-light tracking-[-0.03em] leading-none italic">
+                  Just in 150 Days.
                 </span>
               </motion.h1>
 
@@ -819,8 +824,25 @@ export default function LandingPage() {
                 transition={{ delay: 0.4, duration: 0.7 }}
                 className="mt-8 max-w-2xl font-roboto text-[18px] leading-[1.9] text-white/80"
               >
-                Fixed price. 150-day delivery guarantee. Single-point
-                responsibility from design to handover.
+                Partner with a{" "}
+                <strong className="font-bold text-white">
+                  Warehouse Construction Company
+                </strong>{" "}
+                that takes complete ownership of your project. Whether you need
+                a{" "}
+                <strong className="font-bold text-white">
+                  Warehouse Building Contractor
+                </strong>
+                ,{" "}
+                <strong className="font-bold text-white">
+                  PEB Warehouse Construction Company
+                </strong>
+                , or a{" "}
+                <strong className="font-bold text-white">
+                  Turnkey Warehouse Construction Company
+                </strong>
+                , Inbuilt Infra delivers faster execution, better engineering,
+                and predictable project outcomes.
               </motion.p>
 
               {/* Features */}
@@ -831,9 +853,10 @@ export default function LandingPage() {
                 className="mt-8 space-y-5"
               >
                 {[
-                  "End-to-end delivery: Design → Fabrication → Erection",
-                  "Single-point responsibility. Zero coordination gaps.",
-                  "IS 800 compliant factory fabrication. Structural certificate on handover.",
+                  "Single Contract. Zero Coordination Hassles.",
+                  "End-to-End Turnkey Execution",
+                  "Built for Industrial Performance",
+                  "Trusted by Leading Manufacturing & Logistics Companies",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
                     <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#FFAC03] flex-shrink-0">
@@ -971,155 +994,215 @@ export default function LandingPage() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="w-full max-w-[460px] mx-auto lg:ml-auto order-2 lg:-mt-27"
             >
-              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-[26px] p-5 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+              <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-[26px] p-4 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                 {/* Heading */}
-                <div className="mb-5">
-                  <h3 className="text-2xl md:text-[30px] font-inter font-black text-white mb-2 leading-tight">
+                <div className="mb-4">
+                  <h3 className="text-xl md:text-2xl font-inter font-black text-white leading-tight">
                     Get Free Project Estimate
                   </h3>
-
-                  {/* <p className="text-white/80 font-roboto text-base leading-relaxed"> 
-                    Our engineering team responds within 4 business hours.
-                    No obligation.
-                  </p> */}
                 </div>
 
                 {/* FORM */}
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  {/* Name */}
-                  <div>
-                    <label className="block text-sm font-inter font-bold text-white mb-2">
-                      Your Name *
-                    </label>
-
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="Full name"
-                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label className="block text-sm font-inter font-bold text-white mb-2">
-                      Mobile Number *
-                    </label>
-
-                    <input
-                      type="tel"
-                      name="phone"
-                      maxLength={10}
-                      required
-                      placeholder="+91 98xxx xxxxx"
-                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
-                    />
-                  </div>
-
-                  {/* Project Type */}
-                  <div>
-                    <label className="block text-sm font-inter font-bold text-white mb-2">
-                      Project Type *
-                    </label>
-
-                    <select
-                      name="project_type"
-                      defaultValue=""
-                      required
-                      className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
-                    >
-                      <option value="" disabled className="text-black">
-                        Select project type
-                      </option>
-
-                      <option className="text-black">
-                        Industrial Warehouse
-                      </option>
-
-                      <option className="text-black">
-                        Commercial Building
-                      </option>
-
-                      <option className="text-black">
-                        Institutional Sector
-                      </option>
-
-                      <option className="text-black">
-                        Multi-Storey Steel Building
-                      </option>
-
-                      <option className="text-black">Tensile</option>
-
-                      <option className="text-black">Other</option>
-                    </select>
-                  </div>
-
-                  {/* Area + Location Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Area */}
+                <form className="space-y-3" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-inter font-bold text-white mb-2">
-                        Approx. Area (sq.ft) *
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Full Name *
                       </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Your name"
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      />
+                    </div>
 
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Mobile Number *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        maxLength={10}
+                        required
+                        pattern="[0-9]{10}"
+                        placeholder="+91 98xxx xxxxx"
+                        onInput={(e) => {
+                          const target = e.target as HTMLInputElement;
+                          target.value = target.value.replace(/[^0-9]/g, "");
+                        }}
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Company Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        required
+                        placeholder="Organisation"
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Email ID
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="you@company.com"
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Project Type *
+                      </label>
+                      <select
+                        name="project_type"
+                        defaultValue=""
+                        required
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      >
+                        <option value="" disabled className="text-black">
+                          Select project type
+                        </option>
+                        <option className="text-black">
+                          Industrial Warehouse
+                        </option>
+                        <option className="text-black">
+                          Commercial Building
+                        </option>
+                        <option className="text-black">
+                          Institutional Sector
+                        </option>
+                        <option className="text-black">
+                          Multi-Storey Steel Building
+                        </option>
+                        <option className="text-black">Tensile</option>
+                        <option className="text-black">Other</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Approximate Area *
+                      </label>
                       <select
                         defaultValue=""
                         name="sqft"
                         required
-                        className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
                       >
                         <option value="" disabled className="text-black">
                           Select area
                         </option>
-
                         <option className="text-black">
-                          5,000 - 10,000 sq.ft
+                          10,000 – 20,000 Sq.ft
                         </option>
-
                         <option className="text-black">
-                          10,000 - 25,000 sq.ft
+                          20,000 – 30,000 Sq.ft
                         </option>
-
                         <option className="text-black">
-                          25,000 - 50,000 sq.ft
+                          30,000 – 50,000 Sq.ft
                         </option>
-
                         <option className="text-black">
-                          Above 50,000 sq.ft
+                          Above 50,000 Sq.ft
                         </option>
                       </select>
                     </div>
 
-                    {/* Location */}
                     <div>
-                      <label className="block text-sm font-inter font-bold text-white mb-2">
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
                         Project Location
                       </label>
-
                       <input
                         type="text"
                         name="location"
                         placeholder="City, State"
-                        className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 text-white placeholder:text-white/50 focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Project Start Timeline? *
+                      </label>
+                      <select
+                        name="project_timeline"
+                        defaultValue=""
+                        required
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      >
+                        <option value="" disabled className="text-black">
+                          Select timeline
+                        </option>
+                        <option className="text-black">Immediately</option>
+                        <option className="text-black">Within 1 Month</option>
+                        <option className="text-black">Within 3 Months</option>
+                        <option className="text-black">
+                          Planning for Future
+                        </option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                        Project Budget *
+                      </label>
+                      <select
+                        name="project_budget"
+                        defaultValue=""
+                        required
+                        className="w-full h-10 rounded-xl border border-white/15 bg-white/10 px-3.5 font-roboto text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                      >
+                        <option value="" disabled className="text-black">
+                          Select budget
+                        </option>
+                        <option className="text-black">Below ₹50 Lakhs</option>
+                        <option className="text-black">
+                          ₹50 Lakhs – ₹1 Crore
+                        </option>
+                        <option className="text-black">
+                          ₹1 Crore – ₹5 Crores
+                        </option>
+                        <option className="text-black">Above ₹5 Crores</option>
+                      </select>
                     </div>
                   </div>
 
-                  {/* BUTTON */}
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-white/90 mb-1">
+                      Brief Project Details (Optional)
+                    </label>
+                    <textarea
+                      name="project_details"
+                      placeholder="Crane loads, expansion plans, special requirements..."
+                      rows={2}
+                      className="w-full rounded-xl border border-white/15 bg-white/10 px-3.5 py-2.5 font-roboto text-sm text-white placeholder:text-white/50 resize-none focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/30 focus:border-[#FFAC03] transition-all"
+                    />
+                  </div>
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-5 py-4 text-base font-inter font-black text-[#0A2A4A] transition-all hover:shadow-[0_20px_50px_rgba(255,172,3,0.35)] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-5 py-3 text-base font-inter font-black text-[#0A2A4A] transition-all hover:shadow-[0_20px_50px_rgba(255,172,3,0.35)] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {/* Shine Effect */}
                     <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
 
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       {isSubmitting ? (
                         <>
                           <svg
-                            className="h-5 w-5 animate-spin"
+                            className="h-4 w-4 animate-spin"
                             viewBox="0 0 24 24"
                             fill="none"
                           >
@@ -1131,7 +1214,6 @@ export default function LandingPage() {
                               stroke="currentColor"
                               strokeWidth="4"
                             />
-
                             <path
                               className="opacity-90"
                               fill="currentColor"
@@ -1144,7 +1226,7 @@ export default function LandingPage() {
                         <>
                           Get My Free Project Estimate
                           <ArrowRight
-                            className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                            className="h-4 w-4 transition-transform group-hover:translate-x-1"
                             strokeWidth={2.5}
                           />
                         </>
@@ -1152,8 +1234,7 @@ export default function LandingPage() {
                     </span>
                   </button>
 
-                  {/* FOOTER */}
-                  <p className="text-center text-[12px] leading-relaxed text-white/70 font-roboto pt-1">
+                  <p className="text-center text-[11px] leading-relaxed text-white/70 font-roboto">
                     🔒 No spam. No obligation. We call you within 4 business
                     hours.
                   </p>
@@ -1187,13 +1268,13 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
             {[
               {
-                number: 500,
+                number: 300,
                 suffix: "+",
                 label: "Projects Delivered",
                 animated: true,
               },
               {
-                number: 15,
+                number: 12,
                 suffix: "+",
                 label: "Years of Excellence",
                 animated: true,
@@ -1301,12 +1382,23 @@ export default function LandingPage() {
               Why Inbuilt Infra
             </span>
             <h2 className="text-5xl md:text-6xl font-inter font-black tracking-tight mb-6 text-[#0A2A4A]">
-              Built for durability and efficiency.
+              Trusted Warehouse Construction Company
             </h2>
             <p className="text-lg font-roboto font-medium text-slate-600 leading-relaxed">
-              We design and deliver high-performance pre-engineered steel
-              buildings built for durability, efficiency, and long-term
-              operational value.
+              We deliver{" "}
+              <strong className="font-bold text-[#0A2A4A]">
+                turnkey warehouse construction
+              </strong>
+              ,{" "}
+              <strong className="font-bold text-[#0A2A4A]">
+                PEB warehouse construction
+              </strong>
+              , and{" "}
+              <strong className="font-bold text-[#0A2A4A]">
+                industrial warehouse
+              </strong>{" "}
+              construction with faster execution, optimized costs, and
+              long-lasting quality.
             </p>
           </motion.div>
 
@@ -1520,17 +1612,21 @@ export default function LandingPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-center max-w-3xl mx-auto mb-20"
+            className="text-center max-w-4xl mx-auto mb-20"
           >
             <span className="text-sm font-inter font-black tracking-widest text-[#FFAC03] uppercase mb-4 block">
               Problem → Solution
             </span>
-            <h2 className="text-5xl md:text-6xl font-inter font-black tracking-tight mb-6 text-[#0A2A4A]">
-              Why Choose PEB Over Conventional Construction
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-inter font-black tracking-tight leading-snug mb-6 text-[#0A2A4A] text-balance">
+              Why Choose PEB Warehouse Construction Over Conventional Warehouse
+              Construction?
             </h2>
-            <p className="text-lg font-roboto font-medium text-slate-600">
-              See how Inbuilt Infra delivers better results with advanced
-              pre-engineered building solutions.
+            <p className="text-base md:text-lg font-roboto font-medium text-slate-600 leading-relaxed max-w-3xl mx-auto">
+              As a leading Warehouse Construction Company, we deliver Turnkey
+              Warehouse Construction, PEB Warehouse Construction, and Industrial
+              Warehouse Construction solutions that offer faster project
+              completion, optimized costs, and superior long-term performance
+              compared to conventional construction.
             </p>
           </motion.div>
 
@@ -1553,7 +1649,7 @@ export default function LandingPage() {
                         </span>
                       </div>
                       <span className="text-base md:text-xl font-inter font-black text-slate-700">
-                        Conventional Construction
+                        Conventional Warehouse Construction
                       </span>
                     </div>
                   </th>
@@ -1566,7 +1662,7 @@ export default function LandingPage() {
                         />
                       </div>
                       <span className="text-base md:text-xl font-inter font-black text-white">
-                        Inbuilt Infra PEB Solution
+                        PEB Warehouse Construction by Inbuilt Infra
                       </span>
                     </div>
                   </th>
@@ -1575,40 +1671,68 @@ export default function LandingPage() {
               <tbody>
                 {[
                   {
+                    problemTitle: "Longer Project Timelines",
                     problem:
-                      "Multiple contractors — no single accountability. Delays compound.",
+                      "Traditional warehouse construction relies on on-site activities, increasing project duration.",
+                    solutionTitle: "40–50% Faster Delivery",
                     solution:
-                      "Single point of contact from design to handover. We own the outcome.",
+                      "Our PEB Warehouse Construction Company uses factory-fabricated components for faster installation.",
                   },
                   {
+                    problemTitle: "Higher Construction Costs",
                     problem:
-                      "Quotes change after work starts. 20–30% cost overruns are common.",
+                      "Material wastage and multiple contractors often increase overall project costs.",
+                    solutionTitle: "Optimized Project Cost",
                     solution:
-                      "Fixed-price contracts. What we quote is what you pay and period.",
+                      "As experienced PEB Building Contractors, we optimize steel usage for better value.",
                   },
                   {
+                    problemTitle: "Multiple Contractors",
                     problem:
-                      "  On-site construction takes 12–18 months for large projects.",
+                      "Managing different vendors can cause delays and communication issues.",
+                    solutionTitle: "Turnkey Warehouse Construction",
                     solution:
-                      " Factory fabrication + parallel site work = 40–50% faster completion",
+                      "One team manages design, engineering, fabrication, civil works, and installation.",
                   },
                   {
+                    problemTitle: "Quality Depends on Site Conditions",
                     problem:
-                      "  Quality varies by labour availability and site conditions.",
+                      "Weather and labor availability can impact construction quality.",
+                    solutionTitle: "Factory-Controlled Precision",
                     solution:
-                      "IS 800 compliant factory precision. Same quality every project, every time.",
+                      "Our PEB Construction Company delivers consistent quality with engineered steel components.",
                   },
                   {
+                    problemTitle: "Limited Expansion Flexibility",
                     problem:
-                      "No real-time visibility. Problems emerge only after delays.	",
+                      "Future modifications can be expensive and disruptive.",
+                    solutionTitle: "Expandable PEB Structures",
                     solution:
-                      "Weekly progress reports + dedicated project manager on-site throughout.",
+                      "Designed for easy expansion as your warehouse operations grow.",
                   },
                   {
+                    problemTitle: "Interior Columns Reduce Storage Space",
                     problem:
-                      " Structural modifications later are expensive and time-consuming.",
+                      "Conventional buildings often limit usable floor area.",
+                    solutionTitle: "Clear Span Warehouse Design",
                     solution:
-                      "Modular PEB design — expand, modify, or relocate. Built for your future.",
+                      "Column-free spaces maximize storage capacity and operational efficiency.",
+                  },
+                  {
+                    problemTitle: "Higher Maintenance Costs",
+                    problem:
+                      "Concrete structures require ongoing repairs over time.",
+                    solutionTitle: "Low Maintenance Steel Structures",
+                    solution:
+                      "Durable Steel Structure Warehouses provide long-term reliability with minimal maintenance.",
+                  },
+                  {
+                    problemTitle: "Longer Business Downtime",
+                    problem:
+                      "Delayed completion postpones warehouse operations.",
+                    solutionTitle: "Faster Operational Readiness",
+                    solution:
+                      "Our Warehouse Construction Contractors deliver projects on time, helping businesses start operations sooner.",
                   },
                 ].map((item, i) => (
                   <tr
@@ -1622,9 +1746,14 @@ export default function LandingPage() {
                             ✕
                           </span>
                         </div>
-                        <p className="font-roboto text-slate-600 leading-relaxed text-xs md:text-sm">
-                          {item.problem}
-                        </p>
+                        <div>
+                          <p className="font-inter font-bold text-slate-700 text-sm md:text-base mb-1">
+                            {item.problemTitle}
+                          </p>
+                          <p className="font-roboto text-slate-600 leading-relaxed text-xs md:text-sm">
+                            {item.problem}
+                          </p>
+                        </div>
                       </div>
                     </td>
                     <td className="p-4 md:p-6 align-top bg-[#FFAC03]/5">
@@ -1635,9 +1764,14 @@ export default function LandingPage() {
                             strokeWidth={3}
                           />
                         </div>
-                        <p className="font-roboto text-[#0A2A4A] font-semibold leading-relaxed text-xs md:text-sm">
-                          {item.solution}
-                        </p>
+                        <div>
+                          <p className="font-inter font-bold text-[#0A2A4A] text-sm md:text-base mb-1">
+                            {item.solutionTitle}
+                          </p>
+                          <p className="font-roboto text-[#0A2A4A]/80 leading-relaxed text-xs md:text-sm">
+                            {item.solution}
+                          </p>
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -1983,159 +2117,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      <section
-        id="faq"
-        className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white"
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-center mb-16"
-          >
-            <span className="text-sm font-inter font-black tracking-widest text-[#FFAC03] uppercase mb-4 block">
-              FAQ
-            </span>
-            <h2 className="text-5xl md:text-6xl font-inter font-black tracking-tight mb-6 text-[#0A2A4A]">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg font-roboto font-medium text-slate-600">
-              Everything you need to know about our PEB solutions.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="bg-white rounded-3xl border border-slate-200 p-8 md:p-12"
-          >
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={index}
-                faq={faq}
-                index={index}
-                isOpen={activeFaq === index}
-                onClick={() => toggleFaq(index)}
-              />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-      {/* WHY INBUILT INFRA */}
-      <section className="relative py-24 overflow-hidden bg-[#0A2A4A]">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/why-inbuilt-bg.jpg"
-            alt="Industrial Facility"
-            className="w-full h-full object-cover"
-          />
-
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-[#0A2A4A]/85" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Top Content */}
-          <div className="max-w-3xl">
-            {/* Label */}
-            <div className="inline-flex items-center gap-1mb-6">
-              {/* <span className="w-2 h-2 rounded-full bg-[#FFAC03]" /> */}
-
-              <h2 className="text-[#FFAC03] uppercase tracking-[0.18em] text-[32px] font-inter font-black">
-                Why Inbuilt Infra
-              </h2>
-            </div>
-
-            {/* Heading */}
-            {/* <h2 className="text-white font-inter font-black text-5xl md:text-6xl leading-[1.02] tracking-[-0.05em]">
-              Every claim.
-              <br />
-
-              Backed by proof.
-            </h2> */}
-
-            {/* Description */}
-            {/* <p className="mt-8 text-white/75 text-[18px] leading-[1.9] max-w-2xl font-roboto">
-              We don’t say “quality” without numbers behind it.
-              Here’s what makes us different — specifically.
-            </p> */}
-          </div>
-
-          {/* GRID */}
-          <div className="mt-16 rounded-[32px] overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  title: "40% Faster",
-                  subtitle: "Proven Delivery Speed",
-                  description:
-                    "Across 500+ projects vs traditional RCC construction — factory fabrication and parallel site preparation cuts timeline almost in half.",
-                },
-                {
-                  title: "Fixed Price",
-                  subtitle: "No Cost Surprises. Ever.",
-                  description:
-                    "Detailed BOQ before we cut a single beam. No provisional items. No surprise invoices. What you sign is what you pay — contractually guaranteed.",
-                },
-                {
-                  title: "150 Days",
-                  subtitle: "Delivery Guarantee",
-                  description:
-                    "150 days from order to handover. Penalty clause built into every contract. We've consistently maintained high on-time completion rates.",
-                },
-                {
-                  title: "IS 800",
-                  subtitle: "Compliant Fabrication",
-                  description:
-                    "Every structural component meets Indian Standard specifications. Multi-stage QC at fabrication, erection, and final handover.",
-                },
-                {
-                  title: "Zero Gaps",
-                  subtitle: "Single-Point Responsibility",
-                  description:
-                    "Design, fabrication, erection — all managed in-house. One project manager. One contact. No coordination chaos.",
-                },
-                {
-                  title: "500+",
-                  subtitle: "Projects Delivered",
-                  description:
-                    "Trusted by universities, industries, institutions, hospitals, and commercial clients across South India.",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="group border-b border-white/10 lg:border-b-0 lg:border-r last:border-r-0 border-white/10 p-8 md:p-10 hover:bg-white/[0.03] transition-all duration-300"
-                >
-                  {/* Number / Title */}
-                  <h3 className="text-[#FFAC03] text-4xl font-inter font-black tracking-tight">
-                    {item.title}
-                  </h3>
-
-                  {/* Subtitle */}
-                  <h4 className="mt-5 text-white text-xl font-inter font-bold">
-                    {item.subtitle}
-                  </h4>
-
-                  {/* Description */}
-                  <p className="mt-5 text-white/70 text-[15px] leading-[1.9] font-roboto">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA - FLOATING WITH IMAGE OVERLAY */}
       {/* URGENCY CTA SECTION */}
+
       <section className="relative py-20 bg-[#fff] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="relative rounded-[36px] bg-[#0A2A4A] overflow-hidden border border-white/5">
@@ -2148,13 +2131,13 @@ export default function LandingPage() {
                 {/* Small Label */}
                 <div className="inline-flex items-center gap-2 mb-5 flex-wrap">
                   <span className="text-[#FFAC03] uppercase tracking-[0.18em] text-[12px] font-inter font-black">
-                    Project Calendar Update — May 2026
+                    Project Calendar Update — July 2026
                   </span>
                 </div>
 
                 {/* Heading */}
                 <h2 className="text-white font-inter font-black text-4xl md:text-5xl leading-[1.05] tracking-[-0.04em] max-w-3xl">
-                  Production Slots for Q2 2026
+                  Production Slots for Q3 2026
                   <br />
                   Are Filling Fast.
                 </h2>
@@ -2207,6 +2190,161 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* WHY INBUILT INFRA */}
+      <section className="relative py-24 overflow-hidden bg-[#0A2A4A]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/why-inbuilt-bg.jpg"
+            alt="Industrial Facility"
+            className="w-full h-full object-cover"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-[#0A2A4A]/85" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Top Content */}
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 mb-5">
+              <span className="w-2 h-2 rounded-full bg-[#FFAC03]" />
+              <span className="text-[#FFAC03] uppercase tracking-[0.18em] text-sm font-inter font-black">
+                Why Inbuilt Infra
+              </span>
+            </div>
+
+            <h2 className="text-white font-inter font-black text-2xl sm:text-3xl md:text-4xl leading-snug tracking-tight text-balance">
+              Trusted Warehouse Construction Company for Faster, Smarter Project
+              Delivery
+            </h2>
+
+            <p className="mt-5 text-white/75 text-base md:text-lg leading-relaxed max-w-3xl font-roboto">
+              Delivering{" "}
+              <strong className="font-bold text-white">
+                Turnkey Warehouse Construction
+              </strong>
+              ,{" "}
+              <strong className="font-bold text-white">
+                PEB Warehouse Construction
+              </strong>
+              , and{" "}
+              <strong className="font-bold text-white">
+                Industrial Warehouse Construction
+              </strong>{" "}
+              with fixed pricing, faster timelines, and factory-engineered
+              precision.
+            </p>
+          </div>
+
+          {/* GRID */}
+          <div className="mt-12 md:mt-16 rounded-[32px] overflow-hidden border border-white/10 bg-white/[0.04] backdrop-blur-md">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "40% Faster",
+                  subtitle: "PEB Warehouse Construction",
+                  description:
+                    "Factory-fabricated steel components reduce construction time by up to 40% compared to conventional warehouse construction.",
+                },
+                {
+                  title: "Fixed Price",
+                  subtitle: "Transparent Project Cost",
+                  description:
+                    "Detailed BOQs and optimized steel design ensure predictable pricing with no hidden project costs.",
+                },
+                {
+                  title: "150 Days",
+                  subtitle: "Turnkey Warehouse Delivery",
+                  description:
+                    "Complete turnkey warehouse construction from design to handover with committed project timelines.",
+                },
+                {
+                  title: "IS 800",
+                  subtitle: "Engineered Quality",
+                  description:
+                    "Every warehouse is designed and fabricated in compliance with IS 800 standards for safety and durability.",
+                },
+                {
+                  title: "One Team",
+                  subtitle: "Single-Point Execution",
+                  description:
+                    "Our Warehouse Construction Contractors manage design, engineering, fabrication, civil works, and installation under one contract.",
+                },
+                {
+                  title: "300+ Projects",
+                  subtitle: "Industrial Construction Expertise",
+                  description:
+                    "Trusted Industrial Building Construction Company delivering warehouses, factories, logistics parks, and PEB buildings across South India.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group border-b border-white/10 lg:border-b-0 lg:border-r last:border-r-0 border-white/10 p-8 md:p-10 hover:bg-white/[0.03] transition-all duration-300"
+                >
+                  <h3 className="text-[#FFAC03] text-4xl font-inter font-black tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  <h4 className="mt-5 text-white text-xl font-inter font-bold">
+                    {item.subtitle}
+                  </h4>
+
+                  <p className="mt-5 text-white/70 text-[15px] leading-[1.9] font-roboto">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA - FLOATING WITH IMAGE OVERLAY */}
+
+      {/* FAQ Section */}
+      <section
+        id="faq"
+        className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mb-16"
+          >
+            <span className="text-sm font-inter font-black tracking-widest text-[#FFAC03] uppercase mb-4 block">
+              FAQ
+            </span>
+            <h2 className="text-5xl md:text-6xl font-inter font-black tracking-tight mb-6 text-[#0A2A4A]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg font-roboto font-medium text-slate-600">
+              Everything you need to know about our PEB solutions.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="bg-white rounded-3xl border border-slate-200 p-8 md:p-12"
+          >
+            {faqs.map((faq, index) => (
+              <FAQItem
+                key={index}
+                faq={faq}
+                index={index}
+                isOpen={activeFaq === index}
+                onClick={() => toggleFaq(index)}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
       {/* Lead Capture CTA - FULL WIDTH */}
       <section
         id="contact-form"
@@ -2229,12 +2367,8 @@ export default function LandingPage() {
               </div>
 
               {/* Heading */}
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-inter font-black leading-[0.96] tracking-[-0.05em]">
-                Get a Free
-                <br />
-                Engineering
-                <br />
-                Estimate in 24 Hours.
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-inter font-black leading-snug tracking-tight text-balance max-w-xl">
+                Get a Free Engineering Estimate in 24 Hours.
               </h2>
 
               {/* Description */}
@@ -2357,76 +2491,42 @@ export default function LandingPage() {
             {/* RIGHT FORM */}
             {/* KEEP YOUR EXISTING UPDATED FORM HERE */}
             {/* Right - Form */}
-            <div className="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl w-full max-w-xl lg:max-w-none mx-auto border border-[#FFAC03]/20 relative overflow-hidden">
+            <div className="bg-white rounded-[28px] p-5 md:p-6 shadow-2xl w-full max-w-xl lg:max-w-none mx-auto border border-[#FFAC03]/20 relative overflow-hidden">
               {/* Top Accent */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FFAC03] via-[#FF8800] to-[#FFAC03]" />
 
               {/* Heading */}
-              <div className="mb-8">
-                <h3 className="text-[#0A2A4A] text-3xl font-inter font-black tracking-tight">
+              <div className="mb-4">
+                <h3 className="text-[#0A2A4A] text-2xl font-inter font-black tracking-tight">
                   Request Free Engineering Estimate
                 </h3>
 
-                <p className="mt-3 text-slate-500 text-[15px] leading-relaxed font-roboto">
+                <p className="mt-1.5 text-slate-500 text-sm leading-relaxed font-roboto">
                   Our engineering team reviews your requirements and responds
                   within 24 business hours.
                 </p>
               </div>
 
-              {/* Trust Badges */}
-              {/* <div className="grid grid-cols-2 gap-4 mb-8">
-
-                {[
-                  "IS 800 Compliant",
-                  "500+ Projects",
-                  "120-Day Guarantee",
-                  "Fixed Price",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
-                  >
-
-                    <div className="w-10 h-10 rounded-full bg-[#FFAC03]/10 flex items-center justify-center flex-shrink-0">
-
-                      <Check
-                        className="w-4 h-4 text-[#FFAC03]"
-                        strokeWidth={3}
-                      />
-                    </div>
-
-                    <span className="text-[#0A2A4A] font-inter font-bold text-sm leading-snug">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div> */}
-
               {/* FORM */}
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                {/* Row 1 */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  {/* Name */}
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Full Name *
                     </label>
-
                     <input
                       type="text"
                       name="name"
                       placeholder="Your name"
                       required
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
 
-                  {/* Mobile */}
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Mobile Number *
                     </label>
-
                     <input
                       type="tel"
                       name="phone"
@@ -2438,128 +2538,156 @@ export default function LandingPage() {
                         const target = e.target as HTMLInputElement;
                         target.value = target.value.replace(/[^0-9]/g, "");
                       }}
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
-                </div>
 
-                {/* Row 2 */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  {/* Company */}
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Company Name *
                     </label>
-
                     <input
                       type="text"
                       name="company"
                       placeholder="Organisation"
                       required
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
 
-                  {/* Email */}
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Email ID
                     </label>
-
                     <input
                       type="email"
                       name="email"
                       placeholder="you@company.com"
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
-                </div>
 
-                {/* Project Type */}
-                <div>
-                  <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
-                    Project Type *
-                  </label>
-
-                  <select
-                    name="project_type"
-                    required
-                    defaultValue=""
-                    className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
-                  >
-                    <option value="" disabled>
-                      Select project type
-                    </option>
-                    <option className="text-black">Industrial Warehouse</option>
-
-                    <option className="text-black">Commercial Building</option>
-
-                    <option className="text-black">Institutional Sector</option>
-
-                    <option className="text-black">
-                      Multi-Storey Steel Building
-                    </option>
-
-                    <option className="text-black">Tensile</option>
-
-                    <option className="text-black">Other</option>
-                  </select>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  {/* Area */}
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
+                      Project Type *
+                    </label>
+                    <select
+                      name="project_type"
+                      required
+                      defaultValue=""
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
+                    >
+                      <option value="" disabled>
+                        Select project type
+                      </option>
+                      <option className="text-black">
+                        Industrial Warehouse
+                      </option>
+                      <option className="text-black">
+                        Commercial Building
+                      </option>
+                      <option className="text-black">
+                        Institutional Sector
+                      </option>
+                      <option className="text-black">
+                        Multi-Storey Steel Building
+                      </option>
+                      <option className="text-black">Tensile</option>
+                      <option className="text-black">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Approximate Area *
                     </label>
-
                     <select
                       name="sqft"
                       required
                       defaultValue=""
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     >
                       <option value="" disabled>
                         Select area
                       </option>
-
                       <option>10,000 – 20,000 Sq.ft</option>
                       <option>20,000 – 30,000 Sq.ft</option>
                       <option>30,000 – 50,000 Sq.ft</option>
                       <option>Above 50,000 Sq.ft</option>
                     </select>
                   </div>
+
                   <div>
-                    <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                       Project Location
                     </label>
-
                     <input
                       type="text"
                       name="location"
                       placeholder="City, State"
-                      className="w-full h-[56px] rounded-2xl border border-slate-200 bg-slate-50 px-5 font-roboto text-[15px] text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                     />
                   </div>
+
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
+                      Project Start Timeline? *
+                    </label>
+                    <select
+                      name="project_timeline"
+                      required
+                      defaultValue=""
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
+                    >
+                      <option value="" disabled>
+                        Select timeline
+                      </option>
+                      <option>Immediately</option>
+                      <option>Within 1 Month</option>
+                      <option>Within 3 Months</option>
+                      <option>Planning for Future</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
+                      Project Budget *
+                    </label>
+                    <select
+                      name="project_budget"
+                      required
+                      defaultValue=""
+                      className="w-full h-10 rounded-xl border border-slate-200 bg-slate-50 px-3.5 font-roboto text-sm text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
+                    >
+                      <option value="" disabled>
+                        Select budget
+                      </option>
+                      <option>Below ₹50 Lakhs</option>
+                      <option>₹50 Lakhs – ₹1 Crore</option>
+                      <option>₹1 Crore – ₹5 Crores</option>
+                      <option>Above ₹5 Crores</option>
+                    </select>
+                  </div>
                 </div>
-                {/* Project Details */}
+
+                {/* Project Details - full width */}
                 <div>
-                  <label className="block text-[12px] uppercase tracking-[0.14em] font-inter font-black text-slate-600 mb-2">
+                  <label className="block text-[11px] uppercase tracking-[0.12em] font-inter font-black text-slate-600 mb-1">
                     Brief Project Details (Optional)
                   </label>
-
                   <textarea
                     name="project_details"
-                    placeholder="Crane loads, expansion plans, budget range, special requirements..."
-                    rows={4}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 font-roboto text-[15px] resize-none text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-4 focus:ring-[#FFAC03]/10 transition-all"
+                    placeholder="Crane loads, expansion plans, special requirements..."
+                    rows={2}
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 font-roboto text-sm resize-none text-[#0A2A4A] focus:border-[#FFAC03] focus:outline-none focus:ring-2 focus:ring-[#FFAC03]/10 transition-all"
                   />
                 </div>
+
                 {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-8 py-5 font-inter font-black text-[#0A2A4A] text-lg transition-all hover:shadow-2xl hover:shadow-[#FFAC03]/30 active:scale-[0.99] disabled:opacity-50"
+                  className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#FFAC03] to-[#FF8800] px-6 py-3 font-inter font-black text-[#0A2A4A] text-base transition-all hover:shadow-xl hover:shadow-[#FFAC03]/30 active:scale-[0.99] disabled:opacity-50"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting
@@ -2567,7 +2695,7 @@ export default function LandingPage() {
                       : "Get My Free Engineering Estimate"}
 
                     <ArrowRight
-                      className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
                       strokeWidth={2.5}
                     />
                   </span>
