@@ -693,7 +693,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#FFAC03]/30 overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#FFAC03]/30 overflow-x-clip">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}
@@ -800,7 +800,7 @@ export default function LandingPage() {
                 <span className="w-2 h-2 rounded-full bg-[#FFAC03]" />
 
                 <span className="text-[12px] sm:text-[13px] font-inter font-black tracking-[0.2em] uppercase text-[#FFAC03]">
-                  South India's #1 Trusted PEB Manufacturer — 15+ Years
+                  South India's #1 Trusted PEB Manufacturer — 12+ Years
                 </span>
               </motion.div>
 
@@ -962,7 +962,7 @@ export default function LandingPage() {
               >
                 {/* Call Us */}
                 <a
-                  href="tel:9790924754"
+                  href="tel:+91 78239 67391"
                   className="group bg-[#FFAC03] text-[#0A2A4A] px-8 py-4 rounded-full font-inter font-black hover:bg-[#FF9D00] transition-all shadow-xl shadow-[#FFAC03]/20 active:scale-95 flex items-center justify-center gap-3 text-base"
                 >
                   <Phone className="w-5 h-5" strokeWidth={2.5} />
@@ -1253,7 +1253,7 @@ export default function LandingPage() {
               </a>
 
               <a
-                href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%20Inbuilt%20Infra,%20I%E2%80%99m%20interested%20in%20warehouse%20construction.%20Please%20share%20project%20details,%20pricing,%20and%20next%20steps.&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noreferrer"
                 className="group border-2 border-[#25D366] text-[#25D366] px-8 py-4 rounded-full font-inter font-black hover:bg-[#25D366]/10 transition-all active:scale-95 flex items-center justify-center gap-3 text-base"
@@ -1267,7 +1267,7 @@ export default function LandingPage() {
       {/* STATS BAR */}
       <section className="relative z-20 -mt-1 bg-[#071726] border-t border-white/5 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 number: 300,
@@ -1292,15 +1292,11 @@ export default function LandingPage() {
                 label: "On-Time Rate",
                 animated: false,
               },
-              {
-                number: "IS 800",
-                label: "Compliant Fabrication",
-                animated: false,
-              },
+
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left gap-2 sm:gap-3 py-6 px-5 border-b lg:border-b-0 border-white/5 lg:border-r last:border-r-0 border-white/10"
+                className="flex flex-col sm:flex-row items-center justify-center text-center gap-2 sm:gap-3 py-6 px-5 border-b lg:border-b-0 border-white/5 lg:border-r last:border-r-0 border-white/10"
               >
                 {/* Number */}
                 <div className="flex items-baseline text-[#FFAC03] font-inter font-black text-3xl tracking-tight">
@@ -2444,7 +2440,7 @@ export default function LandingPage() {
                     </div>
 
                     <a
-                      href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%2C+I%27m+planning+a+PEB+project+of+approx+%5Bsq.ft%5D+in+%5Bcity%5D.+Please+share+details.&type=phone_number&app_absent=0"
+                      href="https://api.whatsapp.com/send/?phone=917823967391&text=Hi%20Inbuilt%20Infra,%20I%E2%80%99m%20interested%20in%20warehouse%20construction.%20Please%20share%20project%20details,%20pricing,%20and%20next%20steps.&type=phone_number&app_absent=0"
                       target="_blank"
                       rel="noreferrer"
                       className="text-white/90 font-roboto hover:text-[#25D366] transition-colors"

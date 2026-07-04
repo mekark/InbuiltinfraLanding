@@ -1,13 +1,14 @@
 "use client";
 
 import { Phone } from "lucide-react";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const WHATSAPP_NUMBER = "917823967391";
 
 const WHATSAPP_MESSAGE =
-    "Hi, I'm planning a PEB project of approx [sq.ft] in [city]. Please share details.";
+    "Hi Inbuilt Infra, I'm interested in warehouse construction. Please share project details, pricing, and next steps.";
 
-const PHONE_NUMBER = "9790924754";
+const PHONE_NUMBER = "+91 78239 67391";
 
 export default function FloatingWhatsApp() {
     const href = `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
@@ -15,7 +16,8 @@ export default function FloatingWhatsApp() {
     )}&type=phone_number&app_absent=0`;
 
     return (
-        <div className="fixed bottom-5 right-5 z-[70] flex flex-col gap-3 sm:bottom-6 sm:right-6">
+        <div className="fixed bottom-5 right-5 z-[70] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+            <ScrollToTop />
 
             {/* Call Button */}
             <a
