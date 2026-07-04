@@ -663,6 +663,8 @@ export default function LandingPage() {
       projectType,
       projectStartTimeline: timeline,
       projectBudget: budget,
+      sourceDomain: window.location.hostname,
+      sourceUrl: window.location.href,
     };
 
     try {
